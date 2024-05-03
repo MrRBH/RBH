@@ -14,7 +14,7 @@
           
             
             
-           
+       {{-- <livewire:register/> --}}
             <livewire:action />
             
             @livewireScripts

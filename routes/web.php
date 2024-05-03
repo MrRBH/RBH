@@ -49,6 +49,7 @@ Route::get('/blog',BlogPostComponent::class)->name('blog.posts');
 
 // Route::get('/blog-posts', BlogPostComponent::class);
 Route::get('/viewpost/{postId}', ViewPostComponent::class)->name('view.post');
+// Route::view('')
 
 
 
