@@ -45,6 +45,8 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/blog',BlogPostComponent::class)->name('blog.posts');
+Route::get('/userid',[BlogPostComponent::class,'getUserId']);
+Route::view('welcome','welcome');
 
 
 // Route::get('/blog-posts', BlogPostComponent::class);
