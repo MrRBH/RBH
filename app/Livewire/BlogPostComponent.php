@@ -29,6 +29,7 @@ class BlogPostComponent extends Component
     {
         $this->checkAuthentication();
         $this->loadPosts();
+       
     }
 
     public function createPost()
@@ -142,8 +143,8 @@ class BlogPostComponent extends Component
 
     public function getUserId()
     {
-        $user =  Auth::id();
-        dd($user);
+        return Auth::id();
+    
     }
 
 
