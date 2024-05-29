@@ -141,7 +141,7 @@
             placeholder = " "
 
 
-            class="input input-primary w-full peer pl-10 h-14 pt-3" type="text" wire:model="email"
+            class="input input-primary w-full peer pl-10 h-14 pt-3" type="text" wire:model.live="email"
         />
 
 										<!-- ICON  -->
@@ -219,7 +219,7 @@
             placeholder = " "
 
 
-            class="input input-primary w-full peer pl-10 h-14 pt-3" type="password" wire:model="password"
+            class="input input-primary w-full peer pl-10 h-14 pt-3" type="password" wire:model.live="password"
         />
 
 										<!-- ICON  -->

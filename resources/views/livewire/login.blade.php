@@ -26,6 +26,7 @@
                     }
                 }
             </script>
+            <livewire:styles />
     </head>
 
     <body>
@@ -36,11 +37,11 @@
                         <div class="card">
                             <h3 class="card-header text-center">Login</h3>
                             <div class="card-body">
-                                <form method="POST" action="{{ route('livevwire.customlogin') }}" wire:submit.prevent="customLogin" novalidate>
+                                <form method="POST" action="{{ route('livevwire.customlogin') }}" wire:submit="customLogin" novalidate>
                                     @csrf
                                     <div>
                                         <label for="email" class="form-label">Email</label>
-                                        <input type="email" wire:model='email' class="form-control @error('email') is-invalid @enderror"
+                                        <input type="email" wire:model.live='email' class="form-control @error('email') is-invalid @enderror"
                                             id="email" name="email" value="{{ old('email') }}" required
                                             autofocus>
                                         @error('email')
@@ -51,7 +52,7 @@
                                     <div class="mb-3">
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group">
-                                            <input type="password" wire:model="password"  class="form-control @error('password') is-invalid @enderror" id="password" name="password" required autofocus>
+                                            <input type="password" wire:model.live="password"  class="form-control @error('password') is-invalid @enderror" id="password" name="password" required autofocus>
                                             <button type="button" class="btn btn-secondary"  onclick="showpassword()">
                                                 <i id="eye-icon" class="bi bi-eye"></i>
                                             </button>

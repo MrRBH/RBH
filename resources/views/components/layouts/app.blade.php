@@ -7,7 +7,9 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <title>{{ $title ?? 'Page Title' }}</title>
+    @livewireStyles
     <style>
+        
         body {
             background-color: #f8f9fa;
         }
@@ -131,7 +133,7 @@
     <div class="container">
         {{ $slot }}
     </div>
-
+@livewireScripts
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-OERcA2D1uSp6u6c6d5mMa6t0hU6yuIWkV7mI1JEiSkF3K6eS0Q1RSj4q5shqAR5p" crossorigin="anonymous">
     </script>

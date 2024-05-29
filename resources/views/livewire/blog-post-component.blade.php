@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-        @livewireStyles
+
     <style>
         body {
             background-color: #f8f9fa;
@@ -50,8 +50,11 @@
             margin-right: 5px;
         }
     </style>
+
+<livewire:styles />
+
     <script>
-        setTimeout(function() {
+        setTimeout(function () {
             var adminAlert = document.getElementById('adminAlert');
             var userAlert = document.getElementById('userAlert');
             if (adminAlert) {
@@ -89,8 +92,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">Content</label>
-                    <textarea wire:model="content" id="content" class="form-control" rows="5"
-                        placeholder="Content..." required></textarea>
+                    <textarea wire:model="content" id="content" class="form-control" rows="5" placeholder="Content..." required></textarea>
                     @error('content') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-3">
@@ -127,7 +129,7 @@
                     <button type="submit" class="btn btn-success col-md-2 mt-2 submit-button">Create Post</button>
                 </div>
             </form>
-            @elseif ($postId)
+            @else
             <div class="mt-4">
                 <form wire:submit.prevent="update">
                     <div class="mb-3">
@@ -137,8 +139,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Content</label>
-                        <textarea wire:model="content" id="content" class="form-control" rows="5"
-                            placeholder="Content" required></textarea>
+                        <textarea wire:model="content" id="content" class="form-control" rows="5" placeholder="Content" required></textarea>
                         @error('content') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="d-grid">
@@ -170,13 +171,11 @@
                     <tr>
                         @if ($role === 'admin')
                         <td>
-                            <img src="{{ asset('storage/photos/' . $post->image) }}" alt="Post Image"
-                                style="height: 30px; width: 30px;">
+                            <img src="{{ asset('storage/photos/' . $post->image) }}" alt="Post Image" style="height: 30px; width: 30px;">
                         </td>
                         @endif
                         <td>
-                            <a href="{{ route('view.post', ['postId' => $post->id]) }}" wire:navigate
-                                class="text-decoration-none text-black">{{ $post->title }}</a>
+                            <a href="{{ route('view.post', ['postId' => $post->id]) }}" wire:navigate class="text-decoration-none text-black">{{ $post->title }}</a>
                         </td>
                         <td>{{ $post->active }}</td>
                         @if ($role === 'admin')
@@ -185,8 +184,7 @@
                         <td>{{ $post->updated_at->diffForHumans() }}</td>
                         @endif
                         <td>
-                            <a href="{{ route('view.post', ['postId' => $post->id]) }}" wire:navigate
-                                class="btn btn-success btn-sm">View</a>
+                            <a href="{{ route('view.post', ['postId' => $post->id]) }}" wire:navigate class="btn btn-success btn-sm">View</a>
                             <button class="btn btn-primary btn-sm" wire:click.prevent="edit({{ $post->id }})">Edit</button>
                             <button class="btn btn-danger btn-sm" wire:click.prevent="delete({{ $post->id }})">Delete</button>
                         </td>
@@ -197,9 +195,10 @@
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
-    crossorigin="anonymous"></script>
-    @livewireScripts
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+        <livewire:scripts />
+
+
 </body>
 
 </html>
