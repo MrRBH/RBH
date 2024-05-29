@@ -3,8 +3,10 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Livewire\Component;
 
 class Register extends Component
@@ -15,14 +17,15 @@ class Register extends Component
     public $role; 
     // public $key;
 
-    public function customRegistration()
+    public function customRegistration(Request $request)
     {
-        $rules = [
+        $validator = Validator::make($request->all(), [
             'name' => 'required',
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'role' => 'required'
-        ];
+        ]);
+       
 
         
    
@@ -33,7 +36,8 @@ class Register extends Component
             'role' => $this->role 
         ]);
 
-        Auth::login($user); 
+   Auth::login($user); 
+
         if($user->role =='admin') {
             session()->flash('success', ' You are login as a Admin ');
             return redirect()->to('livewire.dashboard');
@@ -47,7 +51,7 @@ class Register extends Component
             return redirect()->to("livewire.dashboard");
         } else {
           
-            sleep(2);
+            // sleep(10);
             return redirect()->to("blog.posts");
         }
     }

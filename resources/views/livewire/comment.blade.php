@@ -13,6 +13,7 @@
             integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
             crossorigin="anonymous" /> 
         {{-- bootstrap icons --}}
+        <livewire:styles />
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
         <style>
             .second {
@@ -52,23 +53,23 @@
 
                         <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
                             {{-- <h1>Comments</h1> --}}
-                            <form wire:submit.prevent="postComment">
+                            <form wire:submit="postComment">
                                 {{-- <div class="form-group">
                                     <h4>Leave a comment</h4>
                                     <label for="name">Name:</label>
-                                    <input wire:model="name" type="text" name="name" id="fullname" class="form-control">
+                                    <input wire:model.live="name" type="text" name="name" id="fullname" class="form-control">
                                     @error('name') <span class="error">{{ $message }}</span> @enderror
                                 </div> --}}
 
                                 <div class="form-group">
                                     <h4>Leave a comment</h4>
                                     <label for="comment">Comment:</label>
-                                    <textarea wire:model="comment" name="comment" cols="30" rows="5"
+                                    <textarea wire:model.live="comment" name="comment" cols="30" rows="5"
                                         class="form-control"></textarea>
                                     @error('comment') <span class="error">{{ $message }}</span> @enderror
                                 </div>
 
-                                <input type="hidden" name="postId" wire:model="postId">
+                                <input type="hidden" name="postId" wire:model.live="postId">
                                 <div class="form-group">
                                     <button type="submit"  class="btn btn-primary mt-1">Post Comment</button>
                                 </div>
@@ -87,7 +88,7 @@
                                             <span class="text2">{{ optional($comment->user)->name }}</span>
                                         </div>
                                         @if($editingCommentId === $comment->id)
-                                            <textarea wire:model="editedComment" cols="3" rows="3" class="form-control"></textarea>
+                                            <textarea wire:model.live="editedComment" cols="3" rows="3" class="form-control"></textarea>
                                             <button wire:click="saveComment({{ $comment->id }})" class="btn  btn-success mx-2 mt-2">Save</button>
                                         @else
                                             <p>{{ $comment->comment }}</p>
@@ -121,6 +122,8 @@
                 });
             });
         </script>
+        <livewire:scripts />
+
     </body>
 
     </html>

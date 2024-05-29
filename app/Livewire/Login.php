@@ -38,7 +38,8 @@ class Login extends Component
         }
       
     
-        Auth::login($user); 
+        
+         Auth::login($user); 
         if($user->role =='admin') {
             session()->flash('success', ' You are login as a Admin ');
             return redirect()->to('livewire.dashboard');

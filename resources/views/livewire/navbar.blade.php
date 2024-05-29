@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Navbar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <livewire:styles />
  </head>
  <body >
     <nav
@@ -70,7 +71,7 @@
         </div>
         <form wire:submit="add">
             
-            <input type="text"wire:model="todo">
+            <input type="text"wire:model.live="todo">
             <small><span x-text="$wire.todo.split(' '). length-1" ></span>words</small>
             <span><li>count: {{$todo}}</li></span>
             <button type="button" >submit</button>
@@ -81,8 +82,8 @@
         <div>
             <form  wire:submit="plus">
                 
-                <input type="text" wire:model="num1">
-                <input type="text" wire:model="num2"> 
+                <input type="text" wire:model.live="num1">
+                <input type="text" wire:model.live="num2"> 
                 <button type="submit" wire:click="@emit('rescalculate')" >submit</button>
                 <p>  {{$num1}} and {{$num2}} = {{$result}}</p>
                 <p>{{$message}}</p>
@@ -90,7 +91,8 @@
         </div>
     </div>
 
-    
+    <livewire:scripts />
+
  </body>
  </html>
 </div>

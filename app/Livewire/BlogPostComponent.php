@@ -23,12 +23,13 @@ class BlogPostComponent extends Component
     public $active;
     public $category;
     public $category_id;
-    // public $tags = '';
+    public $tags = '';
 
     public function mount()
     {
         $this->checkAuthentication();
         $this->loadPosts();
+       
     }
 
     public function createPost()
@@ -39,11 +40,12 @@ class BlogPostComponent extends Component
             'image' => 'image|mimes:jpeg,jpg,|max:4048',
             'active' => 'required|',
             'category' => 'required',
-            // 'tags' => 'required',
+            'tags' => 'required',
         ]);
 
         $validatedData['user_id'] = $this->getUserId();
-
+       
+        
         if ($this->image) {
             $fileName = $this->image->getClientOriginalName();
             $path = $this->image->storeAs('public/photos', $fileName);
@@ -57,19 +59,19 @@ class BlogPostComponent extends Component
         $post->category_id = $category->id;
         $post->save();
 
-        // $tagsArray = explode(',', $validatedData['tags']);
-        // $tags = [];
-        // foreach ($tagsArray as $tagName) {
-        //     $tag = Tag::firstOrCreate(['tags' => trim($tagName)]);
-        //     $tags[] = $tag->id;
-        // }
-        // $post->tags()->sync($tags);
+        $tagsArray = explode(',', $validatedData['tags']);
+        $tags = [];
+        foreach ($tagsArray as $tagName) {
+            $tag = Tag::firstOrCreate(['tags' => trim($tagName)]);
+            $tags[] = $tag->id;
+        }
+        $post->tags()->sync($tags);
 
         
         $this->dispatch('createPosted', id: $post->id);
-        // $this->createTags('$postId');
-        // $this->resetFields();
-      $this->reset(['title','content','image','active','category']);
+        $this->createTags('$postId');
+        $this->resetFields();
+    //   $this->reset(['title','content','image','active','category']);
 
         $this->loadPosts();
     }
@@ -143,6 +145,7 @@ class BlogPostComponent extends Component
     public function getUserId()
     {
         return Auth::id();
+    
     }
 
 
