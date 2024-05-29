@@ -86,7 +86,8 @@
                                 <h5 class="card-title">Title: {{ $post->title }}</h5>
                                 @livewire('like-button', ['post' => $post])
                             </div>
-                            <p class="card-text">Content: {{ implode(' ', array_slice(str_word_count($post->content, 1), 0, 20)) }}......</p>
+                            <p class="card-text">Content:
+                                {{ implode(' ', array_slice(str_word_count($post->content, 1), 0, 20)) }}......</p>
                             <div class="d-flex justify-content-between mt-4">
                                 <p class="card-text text-muted">Posted By: {{ $post->user->name }}</p>
                                 <p class="card-text text-muted">Created {{ $post->created_at->diffForHumans() }}</p>
@@ -113,19 +114,22 @@
             <div class="post-section">
                 <div class="col-md-12 mb-3">
                     <form role="search">
-                        <input class="form-control me-2" wire:model.live.500ms="search" type="search" placeholder="Search..." aria-label="Search">
+                        <input class="form-control me-2" wire:model.live.500ms="search" type="search"
+                            placeholder="Search..." aria-label="Search">
                     </form>
                 </div>
                 @if ($blogs->count() > 0)
                 @foreach ($blogs as $blog)
                 <a href="{{ route('view.post', ['postId' => $blog->id]) }}" class="text-decoration-none text-black">
                     <div class="card mt-3">
-                        <img src="{{ asset('photos/' . $blog->image) }}" alt="Post Image" class="card-img-top" style="height: 200px;">
+                        <img src="{{ asset('photos/' . $blog->image) }}" alt="Post Image" class="card-img-top"
+                            style="height: 200px;">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <h5 class="card-title">Title: {{ $blog->title }}</h5>
                             </div>
-                            <p class="card-text">Content: {{ implode(' ', array_slice(str_word_count($blog->content, 1), 0, 10)) }}......</p>
+                            <p class="card-text">Content:
+                                {{ implode(' ', array_slice(str_word_count($blog->content, 1), 0, 10)) }}......</p>
                         </div>
                     </div>
                 </a>
@@ -150,7 +154,8 @@
                             $uniqueTags[] = $tag->tags;
                             @endphp
                             <p class="mx-1">
-                                <a wire:click="$set('tags', '{{ $tag->tags }}')" style="cursor: pointer;">{{ $tag->tags }}</a>
+                                <a wire:click="$set('tags', '{{ $tag->tags }}')"
+                                    style="cursor: pointer;">{{ $tag->tags }}</a>
                             </p>
                             @endif
                             @endforeach
@@ -166,8 +171,8 @@
     @livewireScripts
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-HoA4VEhOfJ5B6N2u1MC/2Kw6KY7Bo24/zCAAmwRn+sXK4kwGECSlGkftTLPFF4on"
-        crossorigin="anonymous"></script>
+        integrity="sha384-HoA4VEhOfJ5B6N2u1MC/2Kw6KY7Bo24/zCAAmwRn+sXK4kwGECSlGkftTLPFF4on" crossorigin="anonymous">
+    </script>
 </body>
 
 </html>

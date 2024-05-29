@@ -52,15 +52,6 @@ Route::view('welcome','welcome');
 // Route::get('/blog-posts', BlogPostComponent::class);
 Route::get('/viewpost/{postId}', ViewPostComponent::class)->name('view.post');
 // Route::view('')
-
-
-
-
-
-
-
-
-
 Route::get('/login', Login::class)->name('livewire.login');
 Route::get('livewire.dashboard', [Login::class,'checking']);
 Route::post('custom-login', [Login::class, 'customLogin'])->name('livevwire.customlogin');

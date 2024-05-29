@@ -52,7 +52,7 @@
                                         <label for="password" class="form-label">Password</label>
                                         <div class="input-group">
                                             <input type="password" wire:model="password"  class="form-control @error('password') is-invalid @enderror" id="password" name="password" required autofocus>
-                                            <button type="button" class="btn btn-info" onclick="showpassword()">
+                                            <button type="button" class="btn btn-secondary"  onclick="showpassword()">
                                                 <i id="eye-icon" class="bi bi-eye"></i>
                                             </button>
                                         </div>
