@@ -51,7 +51,7 @@
         }
     </style>
 
-<livewire:styles />
+    <livewire:styles />
 
     <script>
         setTimeout(function () {
@@ -70,12 +70,12 @@
 <body>
     <div class="container mt-5">
         <div class="col-md-8 m-auto">
-            @if(($role=='admin'))
+            @if($role == 'admin')
             <div class="alert alert-warning alert-dismissible fade show" role="alert" id="adminAlert">
                 <strong>You are logged in as an admin</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
-            @elseif($role=='user')
+            @elseif($role == 'user')
             <div class="alert alert-warning alert-dismissible fade show" role="alert" id="userAlert">
                 <strong>You are logged in as a user</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
@@ -124,7 +124,7 @@
                     </select>
                     @error('category') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
-                <livewire:tagfield />
+                <livewire:Tagfield />
                 <div class="d-grid">
                     <button type="submit" class="btn btn-success col-md-2 mt-2 submit-button">Create Post</button>
                 </div>
@@ -196,9 +196,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
-        <livewire:scripts />
-
-
+    <livewire:scripts />
 </body>
 
 </html>
