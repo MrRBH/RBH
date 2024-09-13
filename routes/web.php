@@ -69,4 +69,4 @@ Route::get('/',ShowPosts::class)->name('showposts');
 // Route::get('register', [CustomAuthController::class, 'registration'])->name('register');
 // Route::post('custom-registration', [CustomAuthController::class, 'customRegistration'])->name('register.custom');
 // Route::get('signout', [CustomAuthController::class, 'signOut'])->name('signout');
-// Route::get('welcome', [CustomAuthController::class, 'welcome'])->name('welcome');
+Route::get('welcome', [CustomAuthController::class, 'welcome'])->name('welcome');

@@ -145,6 +145,7 @@ class BlogPostComponent extends Component
     public function getUserId()
     {
         return Auth::id();
+    //    dd(Auth:id());
     
     }
 

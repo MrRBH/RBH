@@ -5,8 +5,8 @@
     <title>Blog Post</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xxx" crossorigin="anonymous"></script> --}}
+
 
     <style>
         body {
@@ -63,7 +63,7 @@
             if (userAlert) {
                 userAlert.classList.add('d-none');
             }
-        }, 1000);
+        },3000);
     </script>
 </head>
 
@@ -84,20 +84,20 @@
         </div>
         <div class="col-md-8 m-auto form-container">
             @if(!$postId)
-            <form wire:submit.prevent="createPost">
+            <form wire:submit="createPost">
                 <div class="mb-3">
                     <label for="title" class="form-label">Title</label>
-                    <input wire:model="title" id="title" class="form-control" type="text" placeholder="Title..." required>
+                    <input wire:model.live="title" id="title" class="form-control" type="text" placeholder="Title..." required>
                     @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-3">
                     <label for="content" class="form-label">Content</label>
-                    <textarea wire:model="content" id="content" class="form-control" rows="5" placeholder="Content..." required></textarea>
+                    <textarea wire:model.live="content" id="content" class="form-control" rows="5" placeholder="Content..." required></textarea>
                     @error('content') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-3">
                     <label for="formFile" class="form-label">Upload Image</label>
-                    <input class="form-control" wire:model="image" type="file" id="formFile" required>
+                    <input class="form-control" wire:model.live="image" type="file" id="formFile" required>
                     @if ($image)
                     <img src="{{ $image->temporaryUrl() }}" style="height: 100px; width: auto; margin-top: 10px;">
                     @endif
@@ -105,7 +105,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="active" class="form-label">Publish:</label>
-                    <select class="form-control" id="active" wire:model="active" required>
+                    <select class="form-control" id="active" wire:model.live="active" required>
                         <option value="">Select</option>
                         <option value="true">Publish</option>
                         <option value="false">Do not Publish</option>
@@ -114,13 +114,13 @@
                 </div>
                 <div class="mb-3">
                     <label for="category" class="form-label">Category:</label>
-                    <select class="form-control" id="category" wire:model="category" required>
-                        <option value="other">Other</option>
-                        <option value="programming">Programming</option>
-                        <option value="Sports">Sports</option>
-                        <option value="Artificial Intelligence">Artificial Intelligence</option>
-                        <option value="Fabrics">Fabrics</option>
-                        <option value="Brands">Brands</option>
+                    <select class="form-control" id="category" wire:model.live="category" required>
+                        <option  value="other">Other</option>
+                        <option  value="programming">Programming</option>
+                        <option  value="Sports">Sports</option>
+                        <option  value="Artificial Intelligence">Artificial Intelligence</option>
+                        <option  value="Fabrics">Fabrics</option>
+                        <option  value="Brands">Brands</option>
                     </select>
                     @error('category') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
@@ -131,15 +131,15 @@
             </form>
             @else
             <div class="mt-4">
-                <form wire:submit.prevent="update">
+                <form wire:submit="update">
                     <div class="mb-3">
                         <label for="title" class="form-label">Title</label>
-                        <input wire:model="title" id="title" class="form-control" type="text" placeholder="Title" required>
+                        <input wire:model.live="title" id="title" class="form-control" type="text" placeholder="Title" required>
                         @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="mb-3">
                         <label for="content" class="form-label">Content</label>
-                        <textarea wire:model="content" id="content" class="form-control" rows="5" placeholder="Content" required></textarea>
+                        <textarea wire:model.live="content" id="content" class="form-control" rows="5" placeholder="Content" required></textarea>
                         @error('content') <span class="text-danger">{{ $message }}</span> @enderror
                     </div>
                     <div class="d-grid">
@@ -194,8 +194,8 @@
             </table>
         </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-xxx" crossorigin="anonymous"></script> --}}
+
     <livewire:scripts />
 </body>
 
