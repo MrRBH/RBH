@@ -12,6 +12,7 @@ use App\Livewire\ShowPosts;
 use App\Livewire\Login;
 use App\Livewire\Register;
 use App\Livewire\Table;
+use Livewire\Volt\Volt;
 use Illuminate\Support\Facades\Route;
 
 
@@ -44,12 +45,13 @@ use Illuminate\Support\Facades\Route;
 //     return view('livewire.action');
 // });
 
-Route::get('/blog',BlogPostComponent::class)->name('blog.posts');
+
+Route::get('/blog',[BlogPostComponent::class,"createPost"])->name('blog.posts');
 Route::get('/userid',[BlogPostComponent::class,'getUserId']);
 Route::view('welcome','welcome');
 
 
-// Route::get('/blog-posts', BlogPostComponent::class);
+Route::get('/blog-posts', BlogPostComponent::class)->name('blog.posts');
 Route::get('/viewpost/{postId}', ViewPostComponent::class)->name('view.post');
 // Route::view('')
 Route::get('/login', Login::class)->name('livewire.login');

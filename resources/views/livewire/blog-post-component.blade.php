@@ -86,17 +86,17 @@
             @if(!$postId)
             <form wire:submit="createPost">
                 <div class="mb-3">
-                    <label for="title" class="form-label">Title</label>
+                    <label for="title" class="form-label">Title:</label>
                     <input wire:model.live="title" id="title" class="form-control" type="text" placeholder="Title..." required>
                     @error('title') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="content" class="form-label">Content</label>
+                    <label for="content" class="form-label">Content:</label>
                     <textarea wire:model.live="content" id="content" class="form-control" rows="5" placeholder="Content..." required></textarea>
                     @error('content') <span class="text-danger">{{ $message }}</span> @enderror
                 </div>
                 <div class="mb-3">
-                    <label for="formFile" class="form-label">Upload Image</label>
+                    <label for="formFile" class="form-label">Upload Image:</label>
                     <input class="form-control" wire:model.live="image" type="file" id="formFile" required>
                     @if ($image)
                     <img src="{{ $image->temporaryUrl() }}" style="height: 100px; width: auto; margin-top: 10px;">
@@ -155,6 +155,7 @@
                     <tr>
                         @if ($role === 'admin')
                         <th>Image</th>
+                    
                         @endif
                         <th>Title</th>
                         <th>Publish</th>
